@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128065210) do
+ActiveRecord::Schema.define(version: 20150128072024) do
+
+  create_table "exercise_sessions", force: :cascade do |t|
+    t.integer  "exercise_id",   limit: 4
+    t.integer  "set_goal",      limit: 4
+    t.integer  "rep_goal",      limit: 4
+    t.integer  "duration_goal", limit: 4
+    t.decimal  "weight",                  precision: 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercise_sets", force: :cascade do |t|
+    t.integer  "exercise_session_id", limit: 4
+    t.integer  "reps",                limit: 4
+    t.integer  "duration",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.integer  "user_id",    limit: 4

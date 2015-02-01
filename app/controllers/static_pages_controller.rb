@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @header = "I'm a header!"
+    @hello = "Hello World!"
   end
 
 end
