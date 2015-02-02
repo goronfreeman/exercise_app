@@ -17,7 +17,6 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-    puts @exercise.inspect
 
     if @exercise.save
       redirect_to exercises_path
