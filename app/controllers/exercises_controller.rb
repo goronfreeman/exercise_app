@@ -13,6 +13,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    @exercise = Exercise.find(params[:id])
   end
 
   def create
@@ -21,14 +22,25 @@ class ExercisesController < ApplicationController
     if @exercise.save
       redirect_to exercises_path
     else
-      render "new"
+      render 'new'
     end
   end
 
   def update
+    @exercise = Exercise.find(params[:id])
+
+    if @exercise.update(exercise_params)
+      redirect_to exercises_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @exercise = Exercise.find(params[:id])
+    @exercise.destroy
+
+    redirect_to exercises_path
   end
 
   private

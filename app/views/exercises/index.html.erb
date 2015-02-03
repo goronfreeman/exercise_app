@@ -1,13 +1,17 @@
 <h1>All exercises</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
+    <th>Actions</th>
   </tr>
 
   <% @exercises.each do |exercise| %>
     <tr>
       <td><%= exercise.name %></td>
+      <td><%= link_to "show ", exercise_path(exercise) %>
+        <%= link_to "edit ", edit_exercise_path(exercise) %>
+        <%= link_to "delete", exercise_path(exercise), method: :delete %></td>
     </tr>
   <% end %>
 </table>
