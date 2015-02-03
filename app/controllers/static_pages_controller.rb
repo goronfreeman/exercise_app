@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @hello = "Hello World!"
+    if user_signed_in?
+      redirect_to exercises_path
+    end
   end
-
 end
