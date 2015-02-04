@@ -50,6 +50,7 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'rsense'
 end
 
 group :test do
