@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ExercisesController do
   before(:each) do
-    user = User.create(email: "foo@bar.com", password: "foobar", password_confirmation: "foobar")
+    user = User.create!(email: "foo@bar.com", password: "password", password_confirmation: "password")
     sign_in(user)
   end
 
