@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :exercises
-  resources :exercise_sessions
+  resources :exercises do
+    resources :exercise_sessions
+  end
 end

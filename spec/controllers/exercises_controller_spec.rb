@@ -35,6 +35,7 @@ describe ExercisesController do
 
     context "when successful" do
       before(:each) do
+        @exercise
         post :create, exercise: @exercise_attr
       end
 

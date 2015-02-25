@@ -10,7 +10,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find(params[:id])
   end
 
-  # Renders the form for creating a new exercise
+  # Renders the view for creating a new exercise
   def new
     @exercise = current_user.exercises.build
   end
@@ -22,13 +22,13 @@ class ExercisesController < ApplicationController
     # Redirects to the index if the save is successful
     if @exercise.save
       redirect_to exercises_path
-    # Renders a new form if the save in unsuccessful
+    # Renders a new view if the save in unsuccessful
     else
       render 'new'
     end
   end
 
-  # Renders the form for editing the name of an exercise
+  # Renders the view for editing the name of an exercise
   def edit
     @exercise = Exercise.find(params[:id])
   end
@@ -40,7 +40,7 @@ class ExercisesController < ApplicationController
     # Redirects to the index if the update is successful
     if @exercise.update(exercise_params)
       redirect_to exercises_path
-    # Renders a new edit form if the update is unsuccessful
+    # Renders a new edit view if the update is unsuccessful
     else
       render 'edit'
     end
@@ -56,7 +56,6 @@ class ExercisesController < ApplicationController
 
   private
 
-    # Strong parameters
     def exercise_params
       params.require(:exercise).permit(:name)
     end
