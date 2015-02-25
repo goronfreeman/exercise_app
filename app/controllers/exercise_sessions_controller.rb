@@ -25,9 +25,22 @@ class ExerciseSessionsController < ApplicationController
   end
 
   def edit
-    puts "params are here: #{params.inspect}"
     @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.find(params[:id])
+  end
+
+  def update
+    @exercise = Exercise.find(params[:exercise_id])
+    @exercise_session = @exercise.exercise_sessions.find(params[:id])
+
+    if @exercise_session.update(exercise_session_params)
+      redirect_to exercises_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
   end
 
   private

@@ -18,7 +18,7 @@
 
   <div>
     <%= f.label :set_goal %><br>
-    <%= f.number_field :set_goal, class: 'form_control' %>
+    <%= f.number_field :set_goal, autofocus: true, class: 'form_control' %>
   </div>
 
   <div>
@@ -37,6 +37,6 @@
   </div>
 
   <div>
-    <%= f.submit "Add session", class: "btn btn-primary" %>
+    <%= f.submit "Edit session", class: "btn btn-primary" %>
   </div>
 <% end %>
