@@ -1,6 +1,6 @@
 <h1>Edit session</h1>
 
-<%= form_for(@exercise_session, url: edit_exercise_exercise_session_path(@exercise, @exercise_session)) do |f| %>
+<%= form_for(@exercise_session, url: exercise_exercise_session_path(@exercise, @exercise_session)) do |f| %>
 
   <% if @exercise_session.errors.any? %>
     <div id="error_explanation">

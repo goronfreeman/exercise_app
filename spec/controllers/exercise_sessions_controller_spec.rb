@@ -92,7 +92,7 @@ describe ExerciseSessionsController do
       @exercise_session = @exercise.exercise_sessions.create(@exercise_session_attr)
       @exercise_session.save!
 
-      put :update, exercise_id: @exercise.id, id: @exercise_session.id
+      put :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
     end
 
     context "when successful" do
@@ -107,7 +107,7 @@ describe ExerciseSessionsController do
 
     context "when unsuccessful" do
       before(:each) do
-        @exercise_sessionattr.merge!(set_goal: nil)
+        @exercise_session_attr.merge!(set_goal: nil)
 
         put  :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
       end
@@ -117,4 +117,24 @@ describe ExerciseSessionsController do
   end
 
   # Test destroy action
+  context "#destroy" do
+    before(:each) do
+      @exercise = @user.exercises.create!(name: "test")
+      @exercise.save!
+
+      @exercise_session_attr = {
+        set_goal: 1,
+        rep_goal: 1,
+        duration_goal: 1,
+        weight: 1
+      }
+
+      @exercise_session = @exercise.exercise_sessions.create(@exercise_session_attr)
+      @exercise_session.save!
+
+      delete :destroy, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
+    end
+
+    it { should redirect_to(exercises_path) }
+  end
 end
