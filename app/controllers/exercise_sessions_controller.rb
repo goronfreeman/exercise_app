@@ -1,5 +1,5 @@
+# Comment
 class ExerciseSessionsController < ApplicationController
-
   def show
     @exercise_session = ExerciseSession.find(params[:id])
   end
@@ -49,8 +49,7 @@ class ExerciseSessionsController < ApplicationController
 
   private
 
-    def exercise_session_params
-      params.require(:exercise_session).permit(:set_goal, :rep_goal, :duration_goal, :weight)
-    end
-
+  def exercise_session_params
+    params.require(:exercise_session).permit(:set_goal, :rep_goal, :duration_goal, :weight)
+  end
 end

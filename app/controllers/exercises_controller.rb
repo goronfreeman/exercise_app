@@ -1,5 +1,5 @@
+# Comment
 class ExercisesController < ApplicationController
-
   # Creates an index of the signed in user's exercises
   def index
     @exercises = current_user.exercises
@@ -56,8 +56,7 @@ class ExercisesController < ApplicationController
 
   private
 
-    def exercise_params
-      params.require(:exercise).permit(:name)
-    end
-
+  def exercise_params
+    params.require(:exercise).permit(:name)
+  end
 end

@@ -1,4 +1,9 @@
-<p>
+<div>
   <strong>Exercise:</strong>
-  <%= @exercise.name %>
-</p>
+  <%= @exercise.name %><br>
+</div>
+<div>
+  <% @exercise.exercise_sessions.each do |session| %>
+    <%= link_to "#{@exercise.name} Session", exercise_exercise_session_path(@exercise.id, session.id) %>
+  <% end %>
+</div>
