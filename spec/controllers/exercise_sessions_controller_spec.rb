@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 describe ExerciseSessionsController do
-  # Sign in user
+  # Sign in user, create exercise
   before(:each) do
     @user = User.create!(email: 'foo@bar.com', password: 'password', password_confirmation: 'password')
     sign_in(@user)
+
+    @exercise = @user.exercises.create!(name: 'test')
+    @exercise.save!
   end
 
   # Test new action
   context '#new' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: 'test')
-      @exercise.save!
-
       get :new, exercise_id: @exercise.id
     end
 
@@ -21,11 +21,7 @@ describe ExerciseSessionsController do
 
   # Test create action
   context '#create' do
-    # Create exercise
     before(:each) do
-      @exercise = @user.exercises.create!(name: 'test')
-      @exercise.save!
-
       @exercise_session_attr = {
         set_goal: 1,
         rep_goal: 1,
@@ -55,11 +51,7 @@ describe ExerciseSessionsController do
 
   # Test edit action
   context '#edit' do
-    # Create exercise
     before(:each) do
-      @exercise = @user.exercises.create!(name: 'test')
-      @exercise.save!
-
       @exercise_session_attr = {
         set_goal: 1,
         rep_goal: 1,
@@ -79,9 +71,6 @@ describe ExerciseSessionsController do
   # Test update action
   context '#update' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: 'test')
-      @exercise.save!
-
       @exercise_session_attr = {
         set_goal: 1,
         rep_goal: 1,
@@ -95,7 +84,7 @@ describe ExerciseSessionsController do
       put :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
     end
 
-    context "when successful" do
+    context 'when successful' do
       before(:each) do
         @exercise_session_attr.merge!(set_goal: 2, rep_goal: 2, duration_goal: 2, weight: 2)
 
@@ -119,9 +108,6 @@ describe ExerciseSessionsController do
   # Test destroy action
   context '#destroy' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: 'test')
-      @exercise.save!
-
       @exercise_session_attr = {
         set_goal: 1,
         rep_goal: 1,

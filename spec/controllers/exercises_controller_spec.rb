@@ -3,12 +3,12 @@ require 'rails_helper'
 describe ExercisesController do
   # Sign in user
   before(:each) do
-    @user = User.create!(email: "foo@bar.com", password: "password", password_confirmation: "password")
+    @user = User.create!(email: 'foo@bar.com', password: 'password', password_confirmation: 'password')
     sign_in(@user)
   end
 
   # Test index action
-  context "#index" do
+  context '#index' do
     before(:each) do
       get :index
     end
@@ -17,7 +17,7 @@ describe ExercisesController do
   end
 
   # Test new action
-  context "#new" do
+  context '#new' do
     before(:each) do
       get :new
     end
@@ -26,23 +26,22 @@ describe ExercisesController do
   end
 
   # Test create action
-  context "#create" do
+  context '#create' do
     before(:each) do
       @exercise_attr = {
-        name: "test"
+        name: 'test'
       }
     end
 
-    context "when successful" do
+    context 'when successful' do
       before(:each) do
-        @exercise
         post :create, exercise: @exercise_attr
       end
 
       it { should redirect_to(exercises_path) }
     end
 
-    context "when unsuccessful" do
+    context 'when unsuccessful' do
       before(:each) do
         @exercise_attr.merge!(name: nil)
 
@@ -54,10 +53,10 @@ describe ExercisesController do
   end
 
   # Test edit action
-  context "#edit" do
+  context '#edit' do
     before(:each) do
       @exercise_attr = {
-        name: "test"
+        name: 'test'
       }
 
       @exercise = @user.exercises.create(@exercise_attr)
@@ -70,26 +69,26 @@ describe ExercisesController do
   end
 
   # Test update action
-  context "#update" do
+  context '#update' do
     before(:each) do
       @exercise_attr = {
-        name: "test"
+        name: 'test'
       }
 
       @exercise = @user.exercises.create(@exercise_attr)
       @exercise.save!
     end
 
-    context "when successful" do
+    context 'when successful' do
       before(:each) do
-        @exercise_attr.merge!(name: "testing")
+        @exercise_attr.merge!(name: 'testing')
         put :update, id: @exercise.id, exercise: @exercise_attr
       end
 
       it { should redirect_to(exercises_path) }
     end
 
-    context "when unsuccessful" do
+    context 'when unsuccessful' do
       before(:each) do
         @exercise_attr.merge!(name: nil)
 
@@ -101,10 +100,10 @@ describe ExercisesController do
   end
 
   # Test destroy action
-  context "#destroy" do
+  context '#destroy' do
     before(:each) do
       @exercise_attr = {
-        name: "test"
+        name: 'test'
       }
 
       @exercise = @user.exercises.create(@exercise_attr)
