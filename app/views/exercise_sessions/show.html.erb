@@ -12,3 +12,9 @@
     <%= @exercise_session.weight %>
   </li>
 </ul>
+
+<ul>
+  <% @exercise_session.exercise_sets.each do |set| %>
+    <li><%= link_to "set", exercise_exercise_session_exercise_set_path(@exercise_session.id, set.id) %></li>
+  <% end %>
+</ul>

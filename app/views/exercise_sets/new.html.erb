@@ -1,0 +1,32 @@
+<h1>Add set</h1>
+
+<%= form_for(@exercise_set, url: exercise_exercise_session_exercise_sets_path(@exercise, @exercise_session)) do |f| %>
+
+  <% if @exercise_set.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@exercise_set.errors.count, "error") %>
+            prohibited this exercise from being saved:
+      </h2>
+      <ul>
+        <% @exercise_set.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :reps %><br>
+    <%= f.number_field :reps, autofocus: true, class: 'form_control' %>
+  </div>
+
+  <div>
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration, class: 'form_control' %>
+  </div>
+
+  <div>
+    <%= f.submit "Add set", class: "btn btn-primary" %>
+  </div>
+<% end %>

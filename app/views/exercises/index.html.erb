@@ -12,9 +12,9 @@
     <tr>
       <td><%= exercise.name %></td>
       <td><%= link_to "show ", exercise_path(exercise) %>
-        <%= link_to "edit ", edit_exercise_path(exercise) %>
-        <%= link_to "delete ", exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?'} %>
-        <%= link_to "start", new_exercise_exercise_session_path(exercise) %></td>
+          <%= link_to "edit ", edit_exercise_path(exercise) %>
+          <%= link_to "delete ", exercise_path(exercise), method: :delete, data: { confirm: 'Are you sure?'} %>
+          <%= link_to "start", new_exercise_exercise_session_path(exercise) %></td>
     </tr>
   <% end %>
 </table>

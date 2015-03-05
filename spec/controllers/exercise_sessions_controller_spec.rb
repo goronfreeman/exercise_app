@@ -1,16 +1,16 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe ExerciseSessionsController do
   # Sign in user
   before(:each) do
-    @user = User.create!(email: "foo@bar.com", password: "password", password_confirmation: "password")
+    @user = User.create!(email: 'foo@bar.com', password: 'password', password_confirmation: 'password')
     sign_in(@user)
   end
 
   # Test new action
-  context "#new" do
+  context '#new' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: "test")
+      @exercise = @user.exercises.create!(name: 'test')
       @exercise.save!
 
       get :new, exercise_id: @exercise.id
@@ -20,10 +20,10 @@ describe ExerciseSessionsController do
   end
 
   # Test create action
-  context "#create" do
+  context '#create' do
     # Create exercise
     before(:each) do
-      @exercise = @user.exercises.create!(name: "test")
+      @exercise = @user.exercises.create!(name: 'test')
       @exercise.save!
 
       @exercise_session_attr = {
@@ -34,7 +34,7 @@ describe ExerciseSessionsController do
       }
     end
 
-    context "when successful" do
+    context 'when successful' do
       before(:each) do
         post :create, exercise_id: @exercise.id, exercise_session: @exercise_session_attr
       end
@@ -42,7 +42,7 @@ describe ExerciseSessionsController do
       it { should redirect_to(exercises_path) }
     end
 
-    context "when unsuccessful" do
+    context 'when unsuccessful' do
       before(:each) do
         @exercise_session_attr.merge!(set_goal: nil)
 
@@ -54,10 +54,10 @@ describe ExerciseSessionsController do
   end
 
   # Test edit action
-  context "#edit" do
+  context '#edit' do
     # Create exercise
     before(:each) do
-      @exercise = @user.exercises.create!(name: "test")
+      @exercise = @user.exercises.create!(name: 'test')
       @exercise.save!
 
       @exercise_session_attr = {
@@ -77,9 +77,9 @@ describe ExerciseSessionsController do
   end
 
   # Test update action
-  context "#update" do
+  context '#update' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: "test")
+      @exercise = @user.exercises.create!(name: 'test')
       @exercise.save!
 
       @exercise_session_attr = {
@@ -105,11 +105,11 @@ describe ExerciseSessionsController do
       it { should redirect_to(exercises_path) }
     end
 
-    context "when unsuccessful" do
+    context 'when unsuccessful' do
       before(:each) do
         @exercise_session_attr.merge!(set_goal: nil)
 
-        put  :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
+        put :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
       end
 
       it { should render_template(:edit) }
@@ -117,9 +117,9 @@ describe ExerciseSessionsController do
   end
 
   # Test destroy action
-  context "#destroy" do
+  context '#destroy' do
     before(:each) do
-      @exercise = @user.exercises.create!(name: "test")
+      @exercise = @user.exercises.create!(name: 'test')
       @exercise.save!
 
       @exercise_session_attr = {

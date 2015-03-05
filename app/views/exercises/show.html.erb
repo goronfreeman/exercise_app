@@ -2,8 +2,8 @@
   <strong>Exercise:</strong>
   <%= @exercise.name %><br>
 </div>
-<div>
+<ul>
   <% @exercise.exercise_sessions.each do |session| %>
-    <%= link_to "#{@exercise.name} Session", exercise_exercise_session_path(@exercise.id, session.id) %>
+    <li><%= link_to "#{@exercise.name} | session", exercise_exercise_session_path(@exercise.id, session.id) %></li>
   <% end %>
-</div>
+</ul>

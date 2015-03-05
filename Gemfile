@@ -56,6 +56,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'rsense'
+  gem 'pry-rails'
 end
 
 group :test do
