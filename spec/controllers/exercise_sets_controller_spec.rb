@@ -27,7 +27,7 @@ describe ExerciseSetsController do
     before(:each) do
       @exercise_set_attr = {
         reps: 1,
-        duration: 1
+        duration: nil
       }
     end
 
@@ -57,7 +57,7 @@ describe ExerciseSetsController do
     before(:each) do
       @exercise_set_attr = {
         reps: 1,
-        duration: 1
+        duration: nil
       }
 
       @exercise_set = @exercise_session.exercise_sets.create(@exercise_set_attr)
@@ -75,7 +75,7 @@ describe ExerciseSetsController do
     before(:each) do
       @exercise_set_attr = {
         reps: 1,
-        duration: 1
+        duration: nil
       }
 
       @exercise_set = @exercise_session.exercise_sets.create(@exercise_set_attr)
@@ -87,7 +87,7 @@ describe ExerciseSetsController do
 
     context 'when successful' do
       before(:each) do
-        @exercise_set_attr.merge!(reps: 2, duration: 2)
+        @exercise_set_attr.merge!(reps: 2)
 
         put :update, exercise_id: @exercise.id, exercise_session_id: @exercise_session.id,
                      id: @exercise_set.id, exercise_set: @exercise_set_attr
@@ -98,7 +98,7 @@ describe ExerciseSetsController do
 
     context 'when unsucessful' do
       before(:each) do
-        @exercise_set_attr.merge!(reps: 'a', duration: 'a')
+        @exercise_set_attr.merge!(reps: 'a')
 
         put :update, exercise_id: @exercise.id, exercise_session_id: @exercise_session.id,
                      id: @exercise_set.id, exercise_set: @exercise_set_attr
@@ -113,7 +113,7 @@ describe ExerciseSetsController do
     before(:each) do
       @exercise_set_attr = {
         reps: 1,
-        duration: 1
+        duration: nil
       }
 
       @exercise_set = @exercise_session.exercise_sets.create(@exercise_set_attr)
