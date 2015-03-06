@@ -3,7 +3,12 @@
   <%= @exercise.name %><br>
 </div>
 <ul>
-  <% @exercise.exercise_sessions.each do |session| %>
-    <li><%= link_to "#{@exercise.name} | session", exercise_exercise_session_path(@exercise.id, session.id) %></li>
+  <% @exercise.exercise_sessions.each_with_index do |session, i| %>
+    <li><%= link_to "#{(i + 1).ordinalize} Session", exercise_exercise_session_path(@exercise, session) %>
+        <%= link_to '| edit', edit_exercise_exercise_session_path(@exercise, session) %>
+        <%= link_to '| delete', exercise_exercise_session_path(@exercise, session), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
 </ul>
+
+<%= link_to "Create exercise session", new_exercise_exercise_session_path(@exercise), class: "btn btn-primary" %>

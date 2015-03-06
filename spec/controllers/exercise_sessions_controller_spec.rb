@@ -35,7 +35,7 @@ describe ExerciseSessionsController do
         post :create, exercise_id: @exercise.id, exercise_session: @exercise_session_attr
       end
 
-      it { should redirect_to(exercises_path) }
+      it { should redirect_to(exercise_path(@exercise)) }
     end
 
     context 'when unsuccessful' do
@@ -91,7 +91,7 @@ describe ExerciseSessionsController do
         put :update, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
       end
 
-      it { should redirect_to(exercises_path) }
+      it { should redirect_to(exercise_path(@exercise)) }
     end
 
     context 'when unsuccessful' do
@@ -121,6 +121,6 @@ describe ExerciseSessionsController do
       delete :destroy, exercise_id: @exercise.id, id: @exercise_session.id, exercise_session: @exercise_session_attr
     end
 
-    it { should redirect_to(exercises_path) }
+    it { should redirect_to(exercise_path(@exercise)) }
   end
 end

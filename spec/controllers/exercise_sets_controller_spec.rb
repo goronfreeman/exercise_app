@@ -37,7 +37,7 @@ describe ExerciseSetsController do
                       exercise_set: @exercise_set_attr
       end
 
-      it { should redirect_to(exercises_path) }
+      it { should redirect_to(exercise_exercise_session_path(@exercise, @exercise_session)) }
     end
 
     context 'when unsucessful' do
@@ -93,7 +93,7 @@ describe ExerciseSetsController do
                      id: @exercise_set.id, exercise_set: @exercise_set_attr
       end
 
-      it { should redirect_to(exercises_path) }
+      it { should redirect_to(exercise_exercise_session_path(@exercise, @exercise_session)) }
     end
 
     context 'when unsucessful' do
@@ -123,6 +123,6 @@ describe ExerciseSetsController do
                        id: @exercise_set.id, exercise_set: @exercise_set_attr
     end
 
-    it { should redirect_to(exercises_path) }
+    it { should redirect_to(exercise_exercise_session_path(@exercise, @exercise_session)) }
   end
 end

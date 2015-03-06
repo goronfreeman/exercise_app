@@ -2,19 +2,7 @@
 
 <%= form_for(@exercise_set, url: exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, @exercise_set)) do |f| %>
 
-  <% if @exercise_set.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@exercise_set.errors.count, "error") %>
-            prohibited this exercise from being saved:
-      </h2>
-      <ul>
-        <% @exercise_set.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render '/shared/form_errors', object_with_errors: @exercise_set %>
 
   <div>
     <%= f.label :reps %><br>

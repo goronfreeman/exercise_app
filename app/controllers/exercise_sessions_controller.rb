@@ -1,24 +1,20 @@
-# Comment
 class ExerciseSessionsController < ApplicationController
   def show
+    @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = ExerciseSession.find(params[:id])
   end
 
-  # Renders the view for creating a new exercise session
   def new
     @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.build
   end
 
-  # Writes the new exercise session to the database
   def create
     @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.new(exercise_session_params)
 
-    # Redirects to the index if the save is successful
     if @exercise_session.save
-      redirect_to exercises_path
-    # Renders a new view if the save is unsuccessful
+      redirect_to exercise_path(@exercise)
     else
       render 'new'
     end
@@ -34,7 +30,7 @@ class ExerciseSessionsController < ApplicationController
     @exercise_session = @exercise.exercise_sessions.find(params[:id])
 
     if @exercise_session.update(exercise_session_params)
-      redirect_to exercises_path
+      redirect_to exercise_path(@exercise)
     else
       render 'edit'
     end
@@ -43,8 +39,9 @@ class ExerciseSessionsController < ApplicationController
   def destroy
     @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.find(params[:id])
+    @exercise_session.destroy
 
-    redirect_to exercises_path
+    redirect_to exercise_path(@exercise)
   end
 
   private

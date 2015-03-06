@@ -1,18 +1,6 @@
 <%= form_for(@exercise) do |f| %>
 
-  <% if @exercise.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@exercise.errors.count, "error") %>
-        prohibited this exercise from being saved:
-      </h2>
-      <ul>
-        <% @exercise.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render '/shared/form_errors', object_with_errors: @exercise %>
 
   <div>
     <%= f.label :name %><br>

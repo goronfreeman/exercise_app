@@ -15,7 +15,7 @@ class ExerciseSetsController < ApplicationController
     @exercise_set = @exercise_session.exercise_sets.new(exercise_set_params)
 
     if @exercise_set.save
-      redirect_to exercises_path
+      redirect_to exercise_exercise_session_path(@exercise, @exercise_session)
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class ExerciseSetsController < ApplicationController
     @exercise_set = @exercise_session.exercise_sets.find(params[:id])
 
     if @exercise_set.update(exercise_set_params)
-      redirect_to exercises_path
+      redirect_to exercise_exercise_session_path(@exercise, @exercise_session)
     else
       render 'edit'
     end
@@ -43,8 +43,9 @@ class ExerciseSetsController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = ExerciseSession.find(params[:exercise_session_id])
     @exercise_set = @exercise_session.exercise_sets.find(params[:id])
+    @exercise_set.destroy
 
-    redirect_to exercises_path
+    redirect_to exercise_exercise_session_path(@exercise, @exercise_session)
   end
 
   private

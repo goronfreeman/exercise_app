@@ -2,19 +2,54 @@
   <li>Set goal:
     <%= @exercise_session.set_goal %>
   </li>
+
+  <!-- <ul>
+    <% @exercise_session.exercise_sets.each do |set_goal| %>
+      <li><%= link_to 'set', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, set_goal) %>
+          <%= link_to ' | edit', edit_exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, set_goal) %>
+          <%= link_to ' | delete', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, set_goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul> -->
+
   <li>Rep goal
     <%= @exercise_session.rep_goal %>
   </li>
+
+  <ul>
+    <% @exercise_session.exercise_sets.each do |rep_goal| %>
+      <li><%= link_to 'set', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, rep_goal) %>
+          <%= link_to ' | edit', edit_exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, rep_goal) %>
+          <%= link_to ' | delete', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, rep_goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+
   <li>Duration goal:
     <%= @exercise_session.duration_goal %>
   </li>
+
+  <ul>
+    <% @exercise_session.exercise_sets.each do |duration_goal| %>
+      <li><%= link_to 'set', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, duration_goal) %>
+          <%= link_to ' | edit', edit_exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, duration_goal) %>
+          <%= link_to ' | delete', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, duration_goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+
   <li>Weight:
     <%= @exercise_session.weight %>
   </li>
+
+  <!-- <ul>
+    <% @exercise_session.exercise_sets.each do |weight| %>
+      <li><%= link_to 'set', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, weight) %>
+          <%= link_to ' | edit', edit_exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, weight) %>
+          <%= link_to ' | delete', exercise_exercise_session_exercise_set_path(@exercise, @exercise_session, weight), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul> -->
 </ul>
 
-<ul>
-  <% @exercise_session.exercise_sets.each do |set| %>
-    <li><%= link_to "set", exercise_exercise_session_exercise_set_path(@exercise_session.id, set.id) %></li>
-  <% end %>
-</ul>
+<%= link_to 'Create exercise set', new_exercise_exercise_session_exercise_set_path(@exercise, @exercise_session), class: 'btn btn-primary' %>
