@@ -56,6 +56,10 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'rsense'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'awesome_print'
+  gem 'quiet_assets'
 end
 
 group :test do
