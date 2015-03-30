@@ -1,16 +1,24 @@
 class ExerciseSessionsController < ApplicationController
-  def show
+  before_action :find_exercise, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :find_exercise_session, only: [:edit, :update, :destroy]
+
+  def find_exercise
     @exercise = Exercise.find(params[:exercise_id])
+  end
+
+  def find_exercise_session
+    @exercise_session = @exercise.exercise_sessions.find(params[:id])
+  end
+
+  def show
     @exercise_session = ExerciseSession.find(params[:id])
   end
 
   def new
-    @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.build
   end
 
   def create
-    @exercise = Exercise.find(params[:exercise_id])
     @exercise_session = @exercise.exercise_sessions.new(exercise_session_params)
 
     if @exercise_session.save
@@ -21,14 +29,9 @@ class ExerciseSessionsController < ApplicationController
   end
 
   def edit
-    @exercise = Exercise.find(params[:exercise_id])
-    @exercise_session = @exercise.exercise_sessions.find(params[:id])
   end
 
   def update
-    @exercise = Exercise.find(params[:exercise_id])
-    @exercise_session = @exercise.exercise_sessions.find(params[:id])
-
     if @exercise_session.update(exercise_session_params)
       redirect_to exercise_path(@exercise)
     else
@@ -37,8 +40,6 @@ class ExerciseSessionsController < ApplicationController
   end
 
   def destroy
-    @exercise = Exercise.find(params[:exercise_id])
-    @exercise_session = @exercise.exercise_sessions.find(params[:id])
     @exercise_session.destroy
 
     redirect_to exercise_path(@exercise)
