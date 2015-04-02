@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_current_user
-    if current_user.nil? && (controller_name != "sessions" && controller_name != "registrations" && controller_name != "static_pages")
+    if current_user.nil? && (controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static_pages')
       redirect_to root_path
     end
   end
