@@ -1,10 +1,15 @@
 class ExercisesController < ApplicationController
+  before_action :retrieve_exercise, only: [:show, :edit, :update, :destroy]
+
+  def retrieve_exercise
+    @exercise = Exercise.find(params[:id])
+  end
+
   def index
     @exercises = current_user.exercises
   end
 
   def show
-    @exercise = Exercise.find(params[:id])
   end
 
   def new
@@ -22,12 +27,9 @@ class ExercisesController < ApplicationController
   end
 
   def edit
-    @exercise = Exercise.find(params[:id])
   end
 
   def update
-    @exercise = Exercise.find(params[:id])
-
     if @exercise.update(exercise_params)
       redirect_to exercises_path
     else
@@ -36,7 +38,6 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
-    @exercise = Exercise.find(params[:id])
     @exercise.destroy
 
     redirect_to exercises_path
